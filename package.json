@@ -1,0 +1,10 @@
+{
+  "name": "onshape-inserter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension + Onshape right-panel app for inserting length-configured FRC parts between two selections.",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "for f in extension/*.js extension/lib/*.js docs/*.js; do node --check \"$f\" || exit 1; done"
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fake Onshape assembly</title>
+    <style>
+      body { margin: 0; font: 13px/1.4 system-ui, sans-serif; color: #1f2937; background: #f3f4f6; }
+      header { padding: 8px 12px; background: #0b3d91; color: #fff; font-weight: 600; }
+      main { display: flex; height: calc(100vh - 36px); }
+      #view { flex: 1; padding: 16px; overflow: auto; }
+      #view button { margin: 0 6px 6px 0; }
+      #side { display: flex; border-left: 1px solid #d1d5db; background: #fff; }
+      #right-panel iframe { width: 300px; height: 100%; border: 0; border-right: 1px solid #e5e7eb; }
+      #toolbar { width: 40px; padding: 8px 4px; }
+      #panel-button { width: 32px; height: 32px; }
+      pre { background: #fff; border: 1px solid #d1d5db; padding: 8px; font-size: 11px; max-height: 50vh; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <header>Fake Onshape: Robot assembly</header>
+    <main>
+      <section id="view">
+        <p>Pretend 3D view. Plate B sits 1.25 in above plate A; plates are 0.125 in thick.</p>
+        <button id="select-holes">Select hole edges (A top, B bottom)</button>
+        <button id="select-faces">Select faces (A top, B bottom)</button>
+        <button id="select-holeFace">Select face B bottom, then hole A</button>
+        <button id="select-clear">Clear selection</button>
+        <label><input type="checkbox" id="replay" checked /> Send current selection when panel opens</label>
+        <p id="status"></p>
+        <pre id="calls"></pre>
+      </section>
+      <aside id="side">
+        <div id="right-panel"></div>
+        <div id="toolbar"><button id="panel-button" title="FRC Inserter">F</button></div>
+      </aside>
+    </main>
+
+    <script src="/extension/config.js"></script>
+    <script>
+      const lib = `https://cad.onshape.com/documents/${'1'.repeat(24)}/w/${'4'.repeat(24)}/e/${'5'.repeat(24)}`;
+      Object.assign(FRCI.config, { panelUrl: 'http://localhost:8282/', debug: true });
+      FRCI.config.parts.forEach((p) => (p.partStudioUrl = lib));
+    </script>
+    <script src="/extension/lib/geometry.js"></script>
+    <script src="/extension/lib/onshape-api.js"></script>
+    <script src="/harness/mock-api.js"></script>
+    <script src="/extension/lib/panel-bridge.js"></script>
+    <script src="/extension/lib/inserter.js"></script>
+    <script src="/extension/lib/ui.js"></script>
+    <script src="/extension/content.js"></script>
+    <script src="/harness/fake-onshape.js"></script>
+  </body>
+</html>

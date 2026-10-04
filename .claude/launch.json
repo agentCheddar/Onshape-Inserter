@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "harness",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["test/harness/server.js"],
+      "port": 8181,
+      "url": "http://localhost:8181"
+    }
+  ]
+}

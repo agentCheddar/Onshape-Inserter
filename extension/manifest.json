@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "FRC Inserter for Onshape",
+  "version": "0.1.0",
+  "description": "Press a hotkey to insert a length-configured spacer or hex shaft between two selected faces or holes in an Onshape assembly.",
+  "content_scripts": [
+    {
+      "matches": ["https://*.onshape.com/documents*"],
+      "js": [
+        "config.js",
+        "lib/geometry.js",
+        "lib/onshape-api.js",
+        "lib/panel-bridge.js",
+        "lib/inserter.js",
+        "lib/ui.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
